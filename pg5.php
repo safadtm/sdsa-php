@@ -5,8 +5,9 @@
     function calculateTriangle($base, $height)
     {
         $area = 0.5 * $base * $height;
-        $perimeter = $base + 2 * sqrt(($base * $base + 4 * $area) / 3);
-        return array('area' => $area, 'perimeter' => $perimeter);
+        $c = sqrt($base * $base + $height * $height); // length of the third side / Hypotenuse
+        $perimeter = $base + $height + $c; 
+        return array('area' => $area, 'perimeter' => number_format($perimeter,2));
     }
 
     function calculateRectangle($length, $width)
