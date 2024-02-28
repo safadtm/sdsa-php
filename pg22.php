@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
 
     <head>
@@ -15,6 +15,10 @@
                 <div>
                     <label for="name">Name:</label>
                     <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password">
                 </div>
                 <div>
                     <label for="address">Address:</label>
@@ -37,11 +41,12 @@
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
+            $password = $_POST['password'];
             $address = $_POST['address'];
             $phone = $_POST['phone'];
 
             // data insertion
-            $sql = "INSERT INTO register (name,address,phone) VALUES ('$name', '$address', '$phone')";
+            $sql = "INSERT INTO register (name,password,address,phone) VALUES ('$name','$password', '$address', '$phone')";
 
             if ($conn->query($sql) === TRUE) {
                 // User registered successfully
