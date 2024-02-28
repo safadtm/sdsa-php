@@ -1,3 +1,6 @@
+<html>
+
+<body>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -5,13 +8,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://www.phptutorial.net/app/css/style.css">
-        <title>Register</title>
+        <title>Login</title>
     </head>
 
     <body>
         <main>
             <form action="" method="post">
-                <h1>Register</h1>
+                <h1>Login</h1>
                 <div>
                     <label for="name">Name:</label>
                     <input type="text" name="name" id="name">
@@ -20,46 +23,47 @@
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password">
                 </div>
-                <div>
-                    <label for="address">Address:</label>
-                    <textarea name="address" id="address" cols="30" rows="10"></textarea>
-                </div>
-                <div>
-                    <label for="phone">Phone:</label>
-                    <input type="number" name="phone" id="phone">
-                </div>
 
-                <button type="submit">Register</button>
-                <a href="pg24.php" target="_blank">Login</a>
+                <button type="submit">Login</button>
+                <!-- Display the error message -->
+                <div style="color: red;">
+                    <?php
+                    if (isset($error_message)) {
+                        echo $error_message;
+                    }
+                    ?>
+                </div>
+                <a href="pg22.php" target="_blank">Register</a>
             </form>
         </main>
-        <?php
-        $conn = mysqli_connect("localhost", "root", "", "Employee");
-        if (mysqli_connect_errno()) {
-            echo "Failed to connect MySql:" . mysqli_connect_error();
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $name = $_POST['name'];
-            $password = $_POST['password'];
-            $address = $_POST['address'];
-            $phone = $_POST['phone'];
-
-            // data insertion
-            $sql = "INSERT INTO register (name,password,address,phone) VALUES ('$name','$password', '$address', '$phone')";
-
-            if ($conn->query($sql) === TRUE) {
-                // User registered successfully
-                header("Location: pg24.php"); // Redirect to another page
-                exit; // Important: Stop executing further code
-
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-        }
-
-        $conn->close();
-        ?>
     </body>
 
     </html>
+
+
+    <?php
+    require('db.php');
+    session_start();
+
+    if (isset($_POST['name'])) {
+
+        $name = $_POST['name'];
+        $password = $_POST['password'];
+
+        $query = "SELECT * FROM `register` WHERE name='$name' and password='$password'";
+
+        $result = mysqli_query($conn, $query) or die(mysqli_connect_error());
+        $rows = mysqli_num_rows($result);
+
+        if ($rows == 1) {
+            $_SESSION['name'] = $name;
+            header("Location: pg22.php");
+        } else {
+            $error_message = "Username or password is incorrect.";
+        }
+    }
+
+    ?>
+</body>
+
+</html>
