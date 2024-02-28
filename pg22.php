@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
     <html lang="en">
 
     <head>
@@ -34,10 +34,7 @@
             </form>
         </main>
         <?php
-        $conn = mysqli_connect("localhost", "root", "", "Employee");
-        if (mysqli_connect_errno()) {
-            echo "Failed to connect MySql:" . mysqli_connect_error();
-        }
+        require('db.php');
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
@@ -49,10 +46,9 @@
             $sql = "INSERT INTO register (name,password,address,phone) VALUES ('$name','$password', '$address', '$phone')";
 
             if ($conn->query($sql) === TRUE) {
-                // User registered successfully
-                header("Location: pg24.php"); // Redirect to another page
-                exit; // Important: Stop executing further code
-
+               
+                header("Location: pg24.php");
+                exit; 
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
