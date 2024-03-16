@@ -57,7 +57,7 @@
 
         if ($rows == 1) {
             $_SESSION['name'] = $name;
-            header("Location: pg22.php");
+            header("Location: table.php");
         } else {
             $error_message = "Username or password is incorrect.";
         }
