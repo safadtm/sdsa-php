@@ -6,7 +6,7 @@
 </head>
 <?php
 if (isset ($_GET['success']) && $_GET['success'] == 1) {
-    echo "updated successfully ..<a href='login.php'>home</a>";
+    echo "updated successfully ..<a href='home.php'>home</a>";
 }
 require ('db.php');
 $sql="SELECT * FROM register";
@@ -28,7 +28,7 @@ if($result=mysqli_query($conn,$sql)){
         echo "<td>".$row['password']."</td>";
         echo "<td>".$row['phone']."</td>";
         echo "<td><a href='edit.php?id=".$row["id"]."'>edit</a></td>";
-        echo "<td><a href='delete.php?id=".$row["id"]."'>edit</a></td>";
+        echo "<td><a href='delete.php?id=".$row["id"]."'>delete</a></td>";
         echo "</tr>";
     }
     echo "</table>";
