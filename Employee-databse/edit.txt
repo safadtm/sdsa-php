@@ -1,0 +1,35 @@
+<?php
+require('db.php');
+$edit_id = $_GET['did'];
+$sql = "SELECT * FROM users where id='".$edit_id."'";
+if ($res = mysqli_query($con, $sql)) {
+	if (mysqli_num_rows($res) > 0) {
+	
+		while ($row = mysqli_fetch_array($res)) {
+			echo "<table>";
+			echo "<tr><td>Firstname</td>";
+			echo "<td>".$row['name']."</td>";
+			echo "</tr>";
+			echo "<tr><td>Address</td>";
+			echo "<td>".$row['address']."</td>";
+			echo "</tr>";
+			echo "<tr><td>Password</td>";
+			echo "<td>".$row['password']."</td>";
+			echo "</tr>";
+			echo "<tr><td></td>";
+			echo "<td><a href='update.php?did=".$row['id']."'>Update</a></td>";
+			echo "</tr>";
+			echo "</table>";
+		}
+			
+	}
+	else {
+		echo "No matching records are found.";
+	}
+}
+else {
+	echo "ERROR: Could not able to execute $sql. "
+								.mysqli_error($con);
+}
+mysqli_close($con);
+?>

@@ -27,9 +27,8 @@ if($result=mysqli_query($conn,$sql)){
         echo "<td>".$row['address']."</td>";
         echo "<td>".$row['password']."</td>";
         echo "<td>".$row['phone']."</td>";
-
-        echo "<td><a href='edit.php?did".$row["id"]."'>edit</a></td>";
-        echo "<td><a href='delete.php?did".$row["id"]."'>edit</a></td>";
+        echo "<td><a href='edit.php?id=".$row["id"]."'>edit</a></td>";
+        echo "<td><a href='delete.php?id=".$row["id"]."'>edit</a></td>";
         echo "</tr>";
     }
     echo "</table>";
