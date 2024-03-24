@@ -65,7 +65,7 @@ if (isset($_POST['name'])) {
     $name = $_POST['name'];
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM `register` WHERE name='$name' AND password='$password'";
+    $query = "SELECT * FROM register WHERE name='$name' AND password='$password'";
 
     $result = mysqli_query($conn, $query) or die (mysqli_connect_error());
     $rows = mysqli_num_rows($result);
