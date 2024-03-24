@@ -4,7 +4,7 @@
     <p>welcome </p>
         <?php
         session_start();
- echo $_SESSION['username']; 
+ echo $_SESSION['name']; 
  ?>
         <br>
         <a href="viewall.php">view </a>
