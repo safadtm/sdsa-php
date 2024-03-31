@@ -75,11 +75,11 @@ if ($_SERVER['REQUEST_METHOD']== 'POST') {
     // data insertion
     $sql = "INSERT INTO register (name,password,address,phone) VALUES ('$name','$password','$address','$phone')";
 
-    if ($conn->query($sql) == TRUE) {
+    if (mysqli_query($conn,$sql)) {
         header("Location: login.php");
         exit;
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 
 }
