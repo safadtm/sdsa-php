@@ -1,0 +1,31 @@
+mysql -u root -p
+
+create database testdb;
+use testdb;
+
+create table table_name(
+  id varchar(3) primary key,
+  name varchar(30) not null,
+  location varchar(30)
+  );
+
+describe testdb;
+
+drop table table_name;
+
+alter table table_name add column_name datatype(size);
+eg : alter table customers add email varchar(255);
+
+alter table customers drop column hod;
+
+insert into table_name (col1,col2,col3) values ('val','val2','val3');
+
+select * from table_name
+
+delete from table_name [where condition];
+eg : delete form dept where id='2';
+
+update table_name
+  set location="1st floor'
+  where id='6';
+  
