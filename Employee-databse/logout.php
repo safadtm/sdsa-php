@@ -1,4 +1,4 @@
-=======
+
 <?php
 session_start();
 
@@ -9,4 +9,4 @@ header("Location: registration.php");
 }
 
 ?>
->>>>>>> 78bfb7c67f9ec4c143ca999da02402df3983d857
+
