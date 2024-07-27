@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-    <style>
+    <!-- <style>
         body {
             font-family: Arial, sans-serif;
         }
@@ -40,23 +40,23 @@
         h2 {
             text-align: center;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
     <h2>Registration</h2>
     <form action="" method="post">
         <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br>
+        <input type="text" id="name" name="name" required><br><br>
 
         <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br>
+        <input type="password" id="password" name="password" required><br><br>
 
         <label for="address">Address:</label><br>
-        <input type="text" id="address" name="address" required><br>
+        <input type="text" id="address" name="address" required><br><br>
 
         <label for="phone">Phone Number:</label><br>
-        <input type="text" id="phone" name="phone" required><br>
+        <input type="text" id="phone" name="phone" required><br><br>
 
         <input type="submit" value="Register">
     </form>
@@ -75,11 +75,11 @@ if ($_SERVER['REQUEST_METHOD']== 'POST') {
     // data insertion
     $sql = "INSERT INTO register (name,password,address,phone) VALUES ('$name','$password','$address','$phone')";
 
-    if ($conn->query($sql) == TRUE) {
+    if (mysqli_query($conn,$sql)) {
         header("Location: login.php");
         exit;
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 
 }

@@ -2,7 +2,7 @@
 
 <body>
     <?php
-    $student = array("Irfan", "Ansaf", "Anzil", "Rishan");
+    $student = array("Menon", "Ram", "Ravin", "Rishi");
     echo str_ireplace(array("\n", " "), array("<br>", " "), print_r($student, true));
 
     ?>

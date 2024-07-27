@@ -2,7 +2,7 @@
     <?php
     require('db.php');
     $edit_id=$_GET['id'];
-    $sql = "SELECT * FROM register where id='".$edit_id."'";
+    $sql = "SELECT * FROM register where id='$edit_id'";
     if($result=mysqli_query($conn,$sql)){
      if(mysqli_num_rows($result)>0){
        
@@ -21,6 +21,7 @@
             echo "<td><a href='update.php?id=".$row['id']."'>Update</a></td></tr>";
             echo "</table>";
         }
+        
      }else{
         echo "No matching records are found.";
      }

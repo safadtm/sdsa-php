@@ -3,7 +3,7 @@
 require('db.php');
 if(isset($_GET['id'])){
   $delete_id=$_GET['id'];
-  $sql="delete from register where id='".$delete_id."'";
+  $sql="delete from register where id='$delete_id'";
   if(mysqli_query($conn,$sql)){
     header("Location: viewall.php");
     echo"Record was delete successfully.";

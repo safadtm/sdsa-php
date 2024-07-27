@@ -6,6 +6,8 @@
         foreach($colors as $x){
             echo "$x <br>";
         }
+       
         ?>
+    
     </body>
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <style>
+    <!-- <style>
         body {
             font-family: Arial, sans-serif;
         }
@@ -40,17 +40,17 @@
         h2 {
             text-align: center;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
     <h2>Login</h2>
     <form action="" method="post">
         <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br>
+        <input type="text" id="name" name="name" required><br><br>
 
         <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br>
+        <input type="password" id="password" name="password" required><br><br>
 
         <input type="submit" value="Login">
     </form>
@@ -74,7 +74,7 @@ if (isset($_POST['name'])) {
          $_SESSION['name']=$name;
          header("Location: home.php");
     } else {
-        echo "Error: " . $query . "<br>" . $conn->error;
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
 
     }
 }

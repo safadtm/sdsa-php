@@ -1,7 +1,8 @@
 <?php
 require ('db.php');
 $edit_id = $_GET['id'];
-$sql = "SELECT * FROM register where id='" . $edit_id . "'";
+$sql = "SELECT * FROM register where id='$edit_id'";
+
 $query = mysqli_query($conn, $sql);
 $data = mysqli_fetch_array($query);
 
@@ -10,13 +11,16 @@ if (isset ($_POST['update'])) {
     $address = $_POST['address'];
     $password = $_POST['password'];
     $phone = $_POST['phone'];
+    
+    $editsql="update register set name='$name',address='$address',password='$password',phone='$phone' where id='$edit_id' ";
+    $edit = mysqli_query($conn,$editsql); // data already edited
 
-    $edit = mysqli_query($conn, "update register set name='$name',address='$address',password='$password',phone='$phone' where id='$edit_id' ");
-    $query = mysqli_query($conn, $sql);
+
+    $query = mysqli_query($conn, $sql); // retirving the tabe data
     $data = mysqli_fetch_array($query);
     echo "Updates Successfully";
 
-    header('Location: viewall.php?success=1');
+    header('Location: viewall.php');
 }
 ?>
 
