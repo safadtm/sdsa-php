@@ -35,7 +35,7 @@ if (isset($_POST['username'])) {
     $sql = "SELECT * FROM admins WHERE username='$username' AND password='$password'";
     
     $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-
+           
     if(mysqli_num_rows($result)==1){
         $_SESSION['username']=$username;
          header("Location: home.php");
